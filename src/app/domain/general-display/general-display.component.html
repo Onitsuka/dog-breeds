@@ -1,4 +1,11 @@
 <div class="general-display">
+  <app-select
+    [options]="breeds()"
+    [value]="selectedBreed()"
+    placeholder="-- Select a breed --"
+    (valueChange)="onBreedSelected($event)">
+  </app-select>
+
   @if (mainImage()) {
     <div class="main-image">
       <img [src]="mainImage()" [alt]="mainBreed()" />

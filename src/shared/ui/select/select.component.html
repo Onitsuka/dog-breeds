@@ -1,0 +1,6 @@
+<select (change)="onChange($event)">
+  <option value="">{{ placeholder }}</option>
+  @for (opt of options; track opt) {
+    <option [value]="opt" [selected]="opt === value">{{ opt }}</option>
+  }
+</select>
