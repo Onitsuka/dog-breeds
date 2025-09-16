@@ -6,11 +6,12 @@ import { DogImagesDto } from './dto/dog-images.dto';
 import { DogSubBreedsDto } from './dto/dog-subbreeds.dto';
 import { DOG_FACTORY } from './factories/dog-factory.token';
 import { AbstractFactory } from './factories/base/abstract-factory';
-import {BaseApiService} from "../base-api.service";
+import { BaseApiService } from "../base-api.service";
+import { environment } from "../../../../environments/environment";
 
 @Injectable({ providedIn: 'root' })
 export class DogApiService extends BaseApiService {
-  private readonly apiUrl = 'https://dog.ceo/api';
+  private readonly apiUrl = environment.apiUrl;
 
   constructor(
     http: HttpClient,
