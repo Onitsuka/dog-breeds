@@ -1,7 +1,8 @@
 // src/app/domain/general-display/general-display.component.ts
 import { Component, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {DogFacadeService} from "../../../shared/infrastructure/services/dog-facade.service";
+import { DogFacadeService } from '../../../shared/infrastructure/services/dog-facade.service';
+import { ThumbnailItemComponent } from "../../../shared/ui/thumbnail-item/thumbnail-item.component";
 
 interface DogThumb {
   url: string;
@@ -11,7 +12,7 @@ interface DogThumb {
 @Component({
   selector: 'app-general-display',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, ThumbnailItemComponent],
   templateUrl: './general-display.component.html',
   styleUrl: './general-display.component.scss',
 })
@@ -52,7 +53,6 @@ export class GeneralDisplayComponent implements OnInit {
 
   /** Utility: breed name from Dog API URL */
   private extractBreed(url: string): string {
-    // example: https://images.dog.ceo/breeds/hound-afghan/n02088094_1003.jpg
     const match = url.match(/breeds\/([^/]+)\//);
     if (!match) return 'Unknown';
     return match[1].replace('-', ' ');

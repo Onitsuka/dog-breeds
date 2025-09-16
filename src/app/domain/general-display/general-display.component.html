@@ -1,20 +1,21 @@
 <div class="general-display">
-  <div class="main-image" *ngIf="mainImage()">
-    <img [src]="mainImage()" [alt]="mainBreed()" />
-    <h2>{{ mainBreed() }}</h2>
-    <button class="fav-btn" (click)="selectImage(mainImage()!)">
-      ❤️ Add to favourites
-    </button>
-  </div>
+  @if (mainImage()) {
+    <div class="main-image">
+      <img [src]="mainImage()" [alt]="mainBreed()" />
+      <h2>{{ mainBreed() }}</h2>
+      <button class="fav-btn" (click)="selectImage(mainImage()!)">
+        ❤️ Add to favourites
+      </button>
+    </div>
+  }
 
   <div class="thumbnails">
-    <div
-      class="thumb"
-      *ngFor="let t of thumbnails()"
-      (click)="selectImage(t.url)"
-      [title]="t.breed">
-      <img [src]="t.url" [alt]="t.breed" />
-      <span>{{ t.breed }}</span>
-    </div>
+    @for (t of thumbnails(); track t.url) {
+      <app-thumbnail-item
+        [url]="t.url"
+        [breed]="t.breed"
+        (click)="selectImage(t.url)">
+      </app-thumbnail-item>
+    }
   </div>
 </div>

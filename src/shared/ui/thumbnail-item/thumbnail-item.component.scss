@@ -1,0 +1,14 @@
+.thumb {
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.2s;
+
+  img {
+    width: 100%;
+    border-radius: 6px;
+  }
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
