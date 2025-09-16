@@ -1,4 +1,3 @@
-// @shared/infrastructure/services/dogs/dog-facade.service.ts
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import {DogApiService} from "../api/breeds/dog-api.service";

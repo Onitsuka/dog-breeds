@@ -16,14 +16,13 @@ export class DogFactoryImpl
     }
 
     if (Array.isArray(res?.message) || typeof res?.message === 'string') {
-      // could be images or sub-breeds
       if (res.message.length > 0 && typeof res.message[0] === 'string' && res.message[0].endsWith('.jpg')) {
         return DogImagesDto.fromResponse(res);
       }
       return DogSubBreedsDto.fromResponse(res);
     }
 
-    return new DogImagesDto(); // fallback empty
+    return new DogImagesDto();
   }
 
   createManyFromResponse(

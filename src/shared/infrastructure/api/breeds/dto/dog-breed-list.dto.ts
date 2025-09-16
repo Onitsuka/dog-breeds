@@ -1,5 +1,5 @@
 export interface DogBreedList {
-  breeds: Record<string, string[]>; // breed -> sub-breed[]
+  breeds: Record<string, string[]>;
 }
 
 export class DogBreedListDto implements DogBreedList {
