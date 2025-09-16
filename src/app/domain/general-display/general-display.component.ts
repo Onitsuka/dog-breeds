@@ -1,8 +1,8 @@
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, OnInit, signal, effect } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DogFacadeService } from '../../../shared/infrastructure/services/dog-facade.service';
 import { FavouritesService } from '../../../shared/infrastructure/services/favourites.service';
-import { ThumbnailItemComponent } from "../../../shared/ui/thumbnail-item/thumbnail-item.component";
+import { ThumbnailItemComponent } from '../../../shared/ui/thumbnail-item/thumbnail-item.component';
 
 interface DogThumb {
   url: string;
@@ -25,6 +25,13 @@ export class GeneralDisplayComponent implements OnInit {
     private dogs: DogFacadeService,
     private favourites: FavouritesService
   ) {
+    effect(() => {
+      const sel = this.favourites.selected();
+      if (sel) {
+        this.mainImage.set(sel.url);
+        this.mainBreed.set(sel.breed);
+      }
+    }, { allowSignalWrites: true });
   }
 
   ngOnInit(): void {
