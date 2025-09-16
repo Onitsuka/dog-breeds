@@ -1,0 +1,25 @@
+.favourite {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+
+  img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 6px;
+    margin-right: 0.5rem;
+    cursor: pointer;
+  }
+
+  span {
+    flex: 1;
+  }
+
+  button {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    color: red;
+  }
+}

@@ -1,4 +1,3 @@
-// src/app/shared/infrastructure/ui/thumbnail-item/thumbnail-item.component.ts
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 

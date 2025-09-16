@@ -1,0 +1,5 @@
+<li class="favourite">
+  <img [src]="url" [alt]="breed" (click)="select.emit()" />
+  <span>{{ breed }}</span>
+  <button (click)="remove.emit()">✖</button>
+</li>

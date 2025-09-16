@@ -1,7 +1,7 @@
-// src/app/domain/general-display/general-display.component.ts
 import { Component, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DogFacadeService } from '../../../shared/infrastructure/services/dog-facade.service';
+import { FavouritesService } from '../../../shared/infrastructure/services/favourites.service';
 import { ThumbnailItemComponent } from "../../../shared/ui/thumbnail-item/thumbnail-item.component";
 
 interface DogThumb {
@@ -21,7 +21,11 @@ export class GeneralDisplayComponent implements OnInit {
   mainBreed = signal<string | null>(null);
   thumbnails = signal<DogThumb[]>([]);
 
-  constructor(private dogs: DogFacadeService) {}
+  constructor(
+    private dogs: DogFacadeService,
+    private favourites: FavouritesService
+  ) {
+  }
 
   ngOnInit(): void {
     this.loadMainImage();
@@ -51,7 +55,12 @@ export class GeneralDisplayComponent implements OnInit {
     this.mainBreed.set(this.extractBreed(url));
   }
 
-  /** Utility: breed name from Dog API URL */
+  addToFavourites(): void {
+    if (this.mainImage() && this.mainBreed()) {
+      this.favourites.add(this.mainImage()!, this.mainBreed()!);
+    }
+  }
+
   private extractBreed(url: string): string {
     const match = url.match(/breeds\/([^/]+)\//);
     if (!match) return 'Unknown';

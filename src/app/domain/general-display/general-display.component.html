@@ -3,7 +3,7 @@
     <div class="main-image">
       <img [src]="mainImage()" [alt]="mainBreed()" />
       <h2>{{ mainBreed() }}</h2>
-      <button class="fav-btn" (click)="selectImage(mainImage()!)">
+      <button class="fav-btn" (click)="addToFavourites()">
         ❤️ Add to favourites
       </button>
     </div>

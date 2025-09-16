@@ -1,11 +1,18 @@
 <div class="favourites">
   <h3>⭐ Favourites</h3>
-  <div *ngIf="favourites().length === 0">No favourites yet</div>
+
+  @if (favouritesService.favourites().length === 0) {
+    <div>No favourites yet</div>
+  }
+
   <ul>
-    <li *ngFor="let f of favourites()">
-      <img [src]="f.url" [alt]="f.breed" (click)="selectFavourite(f)" />
-      <span>{{ f.breed }}</span>
-      <button (click)="removeFavourite(f.url)">✖</button>
-    </li>
+    @for (f of favouritesService.favourites(); track f.url) {
+      <app-favourite-item
+        [url]="f.url"
+        [breed]="f.breed"
+        (remove)="removeFavourite(f.url)"
+        (select)="selectFavourite(f.url, f.breed)">
+      </app-favourite-item>
+    }
   </ul>
 </div>
