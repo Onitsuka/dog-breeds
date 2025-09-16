@@ -1,1 +1,11 @@
-<p>favourites works!</p>
+<div class="favourites">
+  <h3>⭐ Favourites</h3>
+  <div *ngIf="favourites().length === 0">No favourites yet</div>
+  <ul>
+    <li *ngFor="let f of favourites()">
+      <img [src]="f.url" [alt]="f.breed" (click)="selectFavourite(f)" />
+      <span>{{ f.breed }}</span>
+      <button (click)="removeFavourite(f.url)">✖</button>
+    </li>
+  </ul>
+</div>

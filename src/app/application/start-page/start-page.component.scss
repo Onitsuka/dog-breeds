@@ -1,0 +1,16 @@
+.start-page {
+  display: flex;
+  height: 100vh;
+
+  .left {
+    flex: 1;
+    padding: 1rem;
+    overflow-y: auto;
+  }
+
+  .right {
+    width: 300px;
+    border-left: 1px solid #ddd;
+    background: #fafafa;
+  }
+}

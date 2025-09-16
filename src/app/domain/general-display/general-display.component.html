@@ -1,1 +1,20 @@
-<p>general-display works!</p>
+<div class="general-display">
+  <div class="main-image" *ngIf="mainImage()">
+    <img [src]="mainImage()" [alt]="mainBreed()" />
+    <h2>{{ mainBreed() }}</h2>
+    <button class="fav-btn" (click)="selectImage(mainImage()!)">
+      ❤️ Add to favourites
+    </button>
+  </div>
+
+  <div class="thumbnails">
+    <div
+      class="thumb"
+      *ngFor="let t of thumbnails()"
+      (click)="selectImage(t.url)"
+      [title]="t.breed">
+      <img [src]="t.url" [alt]="t.breed" />
+      <span>{{ t.breed }}</span>
+    </div>
+  </div>
+</div>
